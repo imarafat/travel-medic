@@ -59,6 +59,39 @@ class HomeController extends Controller
     
     
     
+
+
+    public function users(Request $request)
+    {
+        
+        $travellers = DB::table('travellers')->get();
+        $users = DB::table('users')->get();
+
+     //   $passenger = User::factory()->count(20)->create();
+
+        return view('users', compact('travellers','users'));
+
+    }   // close travellers
+    
+    
+    
+    
+
+
+    public function drug_test(Request $request)
+    {
+        
+        $travellers = DB::table('travellers')->get();
+        $drug_test = DB::table('drug_test')->get();
+
+     //   $passenger = User::factory()->count(20)->create();
+
+        return view('drug_test', compact('travellers','drug_test'));
+
+    }   // close travellers
+    
+    
+    
     
     
     public function new_agency(Request $request)

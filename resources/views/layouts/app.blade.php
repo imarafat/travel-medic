@@ -49,12 +49,41 @@
                         <li class="nav-item">
                                     <a class="nav-link" href="{{ route('travellers') }}">{{ __('Travellers') }}</a>
                         </li>
+                    
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('clinical_records') }}">{{ __('Clinical Records') }}</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('drug_test') }}">{{ __('Drug Test') }}</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('radiology') }}">{{ __('Radiology') }}</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('physical') }}">{{ __('Physical Examination') }}</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('remarks') }}">{{ __('Remarks') }}</a>
+                        </li>
+
                         
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('users') }}">{{ __('Users') }}</a>
+                        </li>
+                    
+                    
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('user_types') }}">{{ __('User Types') }}</a>
+                        </li>
                     
                         <li class="nav-item">
                                     <a class="nav-link" href="{{ route('agency') }}">{{ __('Agency') }}</a>
                         </li>
-
+                    
                     </ul>
 
                     <!-- Right Side Of Navbar -->
