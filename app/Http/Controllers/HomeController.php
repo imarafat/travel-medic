@@ -107,6 +107,44 @@ DB::table('agency')->insert(['name'=>$name, 'address'=>$address, "created_at" =>
 
     }   // close New agency
 
+    
+    
+    public function new_drug_test(Request $request)
+    {
+            
+        $traveller = $request->input('traveller');
+        $eyes = $request->input('eyes');
+        $lft = $request->input('lft');
+        $remarks = $request->input('remarks');
+
+DB::table('agency')->insert(['pasport_no'=>$traveller, 'address'=>$address, "created_at" => \Carbon\Carbon::now()]);
+
+
+        return redirect()->back()->with('message', 'New Agency has been created successfully!');
+
+    }   // close New drug_test
+
+    
+    public function new_physical(Request $request)
+    {
+            
+        $traveller = $request->input('traveller');
+        $eyes = $request->input('eyes');
+        $lft = $request->input('lft');
+        $remarks = $request->input('remarks');
+
+DB::table('physical_exam')->insert(['pasport_no'=>$traveller, 
+                                    'date'=> \Carbon\Carbon::now(),
+                                    'eyes'=>$eyes,
+                                    'lft'=>$lft, 
+                                    'remarks'=>$remarks, 
+                                    "created_at" => \Carbon\Carbon::now()]);
+
+
+        return redirect()->back()->with('message', 'New Agency has been created successfully!');
+
+    }   // close New drug_test
+
 
 
     

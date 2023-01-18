@@ -12,7 +12,7 @@
 
 @section('content')
       
-        <div class="col-md-12">
+        <div class="col-md-10 mx-auto">
             
             <div class="card" id="dashboard">
                 <div class="card-header">{{ __('Drug Test') }}</div>
@@ -57,24 +57,59 @@
                         </div>
                         
 
-                        
                         <div class="form-group row my-2">
-                            <label for="eyes" class="col-md-4 col-form-label text-md-right">{{ __('Eyes') }}</label>
+                            <label for="eyes" class=" col-form-label text-md-right">{{ __('Eyes') }}</label>
+  
 
-                            <div class="col-md-12">
-                                <input id="eyes" type="text" class="form-control" name="eyes" required autocomplete="" autofocus>
+                            <div class="col-md-8">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="eyes" id="eyes1">
+                                    <label class="form-check-label" for="eyes1">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="eyes" id="eyes2" checked>
+                                    <label class="form-check-label" for="eyes2">
+                                        No
+                                    </label>
+                                </div>
 
                             </div>
+
+                            
+                        
                         </div>
                         
+                        
                         <div class="form-group row my-2">
-                            <label for="lft" class="col-md-4 col-form-label text-md-right">{{ __('LFT') }}</label>
+                            <label for="lft" class=" col-form-label text-md-right">{{ __('LFT') }}</label>
+  
 
-                            <div class="col-md-12">
-                                <input id="lft" type="text" class="form-control" name="lft" required autocomplete="" autofocus>
+                            <div class="col-md-8">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="lft" id="lft1">
+                                    <label class="form-check-label" for="lft1">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="lft" id="lft2" checked>
+                                    <label class="form-check-label" for="lft2">
+                                        No
+                                    </label>
+                                </div>
 
                             </div>
+
+                            
+                        
                         </div>
+                        
                         
                         <div class="form-group row my-2">
                             <label for="remarks" class=" col-form-label text-md-right">{{ __('Remarks') }}</label>
@@ -83,15 +118,15 @@
                             <div class="col-md-8">
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="remarks" id="flexRadioDefault1">
-                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="remarks" id="remarks1">
+                                    <label class="form-check-label" for="remarks1">
                                         Yes
                                     </label>
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="remarks" id="flexRadioDefault2" checked>
-                                    <label class="form-check-label" for="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="remarks" id="remarks2" checked>
+                                    <label class="form-check-label" for="remarks2">
                                         No
                                     </label>
                                 </div>
