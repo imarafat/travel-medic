@@ -12,10 +12,10 @@
 
 @section('content')
       
-        <div class="col-md-12">
+        <div class="col-md-10 mx-auto">
             
             <div class="card" id="dashboard">
-                <div class="card-header">{{ __('Agency') }}</div>
+                <div class="card-header">{{ __('Remarks') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -31,28 +31,73 @@
 @endif
                   
 
-                    <form method="POST" enctype="multipart/form-data" action="{{ url('new-agency') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ url('new-remarks') }}">
                         @csrf
 
                         
+                        
                         <div class="form-group row my-2">
-                            <label for="agency_name" class="col-md-4 col-form-label text-md-right">{{ __('Agency Name') }}</label>
+                            <label for="traveller" class="col-md-4 col-form-label text-md-right">{{ __('Traveller') }}</label>
 
                             <div class="col-md-12">
-                                <input id="agency_name" type="text" class="form-control" name="agency_name" required autocomplete="" autofocus>
+                            
+                            <select id="traveller" class="form-control" name="traveller">
+                                    
+                                    <option value=""> Select Traveller </option>
+                                    
+                        @foreach($travellers ?? '' as $traveller)
+                                     
+                             <option value="{{ $traveller->pasport_no }}"> {{ $traveller->full_name }} - {{ $traveller->pasport_no }}  </option>
+
+                        @endforeach   
+                            
+                                </select>
 
                             </div>
                         </div>
                         
                         <div class="form-group row my-2">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                            <label for="note" class="col-md-4 col-form-label text-md-right">{{ __('Note') }}</label>
 
                             <div class="col-md-12">
-                                <input id="address" type="text" class="form-control" name="address" required autocomplete="" autofocus>
+                                <input id="note" type="text" class="form-control" name="note" required autocomplete="" autofocus>
+
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row my-2">
+                            <label for="remarks" class="col-md-4 col-form-label text-md-right">{{ __('Remarks') }}</label>
+
+                            <div class="col-md-12">
+                                <input id="remarks" type="text" class="form-control" name="remarks" required autocomplete="" autofocus>
 
                             </div>
                         </div>
 
+
+                        <div class="form-group row my-2">
+                            <label for="status" class=" col-form-label text-md-right">{{ __('Status') }}</label>
+  
+                            <div class="col-md-8">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="status" id="status1" value="1">
+                                    <label class="form-check-label" for="status1">
+                                    Published
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="status" id="eyes2" value="0" checked>
+                                    <label class="form-check-label" for="status2">
+                                    Unpublished
+                                    </label>
+                                </div>
+
+                            </div>
+                                                    
+                        </div>
+                        
 
                         <div class="form-group row my-2">
                             <div class="col-md-6 offset-md-4">
@@ -69,7 +114,7 @@
 
 
             <div class="card" id="all_cat">
-                <div class="card-header">{{ __('Agency List') }}</div>
+                <div class="card-header">{{ __('Remarks List') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -91,20 +136,31 @@
 
                             <div class="col-md-12">
 
-<table id="product_list" class="table table-hover">
+                            <table id="product_list" class="table table-hover">
                     <thead class="text-primary">
                     <tr>    
-                      <th>ID</th>
-                      <th>Agency Name</th>
+                      <th>Passport</th>
+                      <th>Note</th>
+                      <th>Remarks</th>
+                      <th>Status</th>
                       <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         
-                           @foreach($agency ?? '' as $agent)
+                           @foreach($remarks ?? '' as $agent)
 <tr id="agent_{{$agent->id}}">
-                      <td>{{ $agent->id }}</td>
-                      <td>{{ $agent->name }}</td>
+                      <td>{{ $agent->pasport_no }}</td>
+                      <td>{{ $agent->note }}</td>
+                      <td>{{ $agent->remarks_txt }}</td>
+                      
+                    <td> @if($agent->status ==1)  
+                            Published 
+                        @else
+                            Unpublished
+                        @endif 
+                    </td>
+
                      
                       <td> <a href="{{ url('agent-edit', $agent->id) }}" target="_blank"> Update </a> | 
                       <a href="javascript:void(0)" class="text-danger del_cat" onclick="delete_category({{$agent->id}})" idd="{{$agent->id}}"> DELETE </a></td>
@@ -113,7 +169,7 @@
 
                     </tbody>
                   </table>
-                  
+                     
                             
                             </div>
                         </div>

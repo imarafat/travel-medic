@@ -51,10 +51,18 @@ Route::get('/user_types', [App\Http\Controllers\HomeController::class, 'user_typ
 
 Route::post('new-agency', [App\Http\Controllers\HomeController::class, 'new_agency'])->name('new_agency');
 
+Route::post('new-clinical-records', [App\Http\Controllers\HomeController::class, 'new_clinical_records'])->name('new_clinical_records');
+
 Route::post('new-drug-test', [App\Http\Controllers\HomeController::class, 'new_drug_test'])->name('new_drug_test');
 
-Route::post('new-physical', [App\Http\Controllers\HomeController::class, 'physical'])->name('physical');
+Route::post('new-radio-test', [App\Http\Controllers\HomeController::class, 'new_radio_test'])->name('new_radio_test');
+
+Route::post('new-physical-exam', [App\Http\Controllers\HomeController::class, 'new_physical_exam'])->name('new_physical_exam');
 
 Route::post('new-travellers', [App\Http\Controllers\HomeController::class, 'new_travellers'])->name('new_travellers');
+
+Route::post('new-remarks', [App\Http\Controllers\HomeController::class, 'new_remarks'])->name('new_remarks');
+
+Route::post('new-user-type', [App\Http\Controllers\HomeController::class, 'new_user_type'])->name('new_user_type');
 
 

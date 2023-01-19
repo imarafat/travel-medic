@@ -12,10 +12,10 @@
 
 @section('content')
       
-        <div class="col-md-12">
+        <div class="col-md-10 mx-auto">
             
             <div class="card" id="dashboard">
-                <div class="card-header">{{ __('Agency') }}</div>
+                <div class="card-header">{{ __('Physical Examination') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -31,28 +31,113 @@
 @endif
                   
 
-                    <form method="POST" enctype="multipart/form-data" action="{{ url('new-agency') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ url('new-physical-exam') }}">
                         @csrf
 
                         
+                        
                         <div class="form-group row my-2">
-                            <label for="agency_name" class="col-md-4 col-form-label text-md-right">{{ __('Agency Name') }}</label>
+                            <label for="traveller" class="col-md-4 col-form-label text-md-right">{{ __('Traveller') }}</label>
 
                             <div class="col-md-12">
-                                <input id="agency_name" type="text" class="form-control" name="agency_name" required autocomplete="" autofocus>
+                            
+                            <select id="traveller" class="form-control" name="traveller">
+                                    
+                                    <option value=""> Select Traveller </option>
+                                    
+                        @foreach($travellers ?? '' as $traveller)
+                                     
+                             <option value="{{ $traveller->pasport_no }}"> {{ $traveller->full_name }} - {{ $traveller->pasport_no }}  </option>
+
+                        @endforeach   
+                            
+                                </select>
 
                             </div>
                         </div>
                         
-                        <div class="form-group row my-2">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
-                            <div class="col-md-12">
-                                <input id="address" type="text" class="form-control" name="address" required autocomplete="" autofocus>
+                        <div class="form-group row my-2">
+                            <label for="eyes" class=" col-form-label text-md-right">{{ __('Eyes') }}</label>
+  
+
+                            <div class="col-md-8">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="eyes" id="eyes1" value="1">
+                                    <label class="form-check-label" for="eyes1">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="eyes" id="eyes2" value="0" checked>
+                                    <label class="form-check-label" for="eyes2">
+                                        No
+                                    </label>
+                                </div>
 
                             </div>
-                        </div>
 
+                            
+                        
+                        </div>
+                        
+                        
+                        <div class="form-group row my-2">
+                            <label for="lft" class=" col-form-label text-md-right">{{ __('LFT') }}</label>
+  
+
+                            <div class="col-md-8">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="1" name="lft" id="lft1">
+                                    <label class="form-check-label" for="lft1">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="0" name="lft" id="lft2" checked>
+                                    <label class="form-check-label" for="lft2">
+                                        No
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            
+                        
+                        </div>
+                        
+                        
+                        <div class="form-group row my-2">
+                            <label for="remarks" class=" col-form-label text-md-right">{{ __('Remarks') }}</label>
+  
+
+                            <div class="col-md-8">
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="1" name="remarks" id="remarks1">
+                                    <label class="form-check-label" for="remarks1">
+                                        Yes
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="0" name="remarks" id="remarks2" checked>
+                                    <label class="form-check-label" for="remarks2">
+                                        No
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            
+                        
+                        </div>
+                        
+                        
 
                         <div class="form-group row my-2">
                             <div class="col-md-6 offset-md-4">
@@ -69,7 +154,7 @@
 
 
             <div class="card" id="all_cat">
-                <div class="card-header">{{ __('Agency List') }}</div>
+                <div class="card-header">{{ __('Physical Examination Report') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -94,17 +179,41 @@
 <table id="product_list" class="table table-hover">
                     <thead class="text-primary">
                     <tr>    
-                      <th>ID</th>
-                      <th>Agency Name</th>
+                      <th>Date</th>
+                      <th>Passport</th>
+                      <th>Eyes</th>
+                      <th>LFT</th>
+                      <th>Remarks</th>
                       <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         
-                           @foreach($agency ?? '' as $agent)
+                           @foreach($physical ?? '' as $agent)
 <tr id="agent_{{$agent->id}}">
-                      <td>{{ $agent->id }}</td>
-                      <td>{{ $agent->name }}</td>
+                      <td>{{ $agent->date }}</td>
+                      <td>{{ $agent->pasport_no }}</td>
+                      <td> @if($agent->eyes ==1)  
+                            Yes 
+                        @else
+                            No 
+                        @endif 
+                    </td>
+                    
+                    <td> @if($agent->lft ==1)  
+                            Yes 
+                        @else
+                            No 
+                        @endif 
+                    </td>
+                    
+                    <td> @if($agent->remarks ==1)  
+                            Yes 
+                        @else
+                            No 
+                        @endif 
+                    </td>
+
                      
                       <td> <a href="{{ url('agent-edit', $agent->id) }}" target="_blank"> Update </a> | 
                       <a href="javascript:void(0)" class="text-danger del_cat" onclick="delete_category({{$agent->id}})" idd="{{$agent->id}}"> DELETE </a></td>
@@ -120,7 +229,7 @@
                 
 
                 </div>
-            </div> <!--  All agent   -->
+            </div> <!--  All list   -->
 
 
         </div>
