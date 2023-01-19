@@ -14,9 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <link href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+   
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
@@ -45,7 +44,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                    
+                    @guest
+                    @else
+
+                        @if( Auth::user()->user_types == 1 )
+
                         <li class="nav-item">
                                     <a class="nav-link" href="{{ route('travellers') }}">{{ __('Travellers') }}</a>
                         </li>
@@ -83,7 +86,46 @@
                         <li class="nav-item">
                                     <a class="nav-link" href="{{ route('agency') }}">{{ __('Agency') }}</a>
                         </li>
+
+                     @elseif( Auth::user()->user_types == 2 )   
+
+                     <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('travellers') }}">{{ __('Travellers') }}</a>
+                        </li>
                     
+                    @elseif( Auth::user()->user_types == 3 )
+
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('clinical_records') }}">{{ __('Clinical Records') }}</a>
+                        </li>
+                    
+                    
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('drug_test') }}">{{ __('Drug Test') }}</a>
+                        </li>
+
+                        @elseif( Auth::user()->user_types == 4 )
+
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('radiology') }}">{{ __('Radiology') }}</a>
+                        </li>
+
+                        @elseif( Auth::user()->user_types == 5 )
+
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('physical') }}">{{ __('Physical Examination') }}</a>
+                        </li>
+
+                        @elseif( Auth::user()->user_types == 6 )
+
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('remarks') }}">{{ __('Remarks') }}</a>
+                        </li>
+
+                    
+                        @endif
+                    @endguest
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

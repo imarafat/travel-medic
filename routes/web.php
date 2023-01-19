@@ -48,6 +48,11 @@ Route::get('/users', [App\Http\Controllers\HomeController::class, 'users'])->nam
 
 Route::get('/user_types', [App\Http\Controllers\HomeController::class, 'user_types'])->name('user_types');
 
+Route::get('user-edit/{id}', [App\Http\Controllers\HomeController::class, 'user_profile'])->name('user_profile');
+
+
+
+Route::post('update-user', [App\Http\Controllers\HomeController::class, 'update_user'])->name('update_user');
 
 Route::post('new-agency', [App\Http\Controllers\HomeController::class, 'new_agency'])->name('new_agency');
 

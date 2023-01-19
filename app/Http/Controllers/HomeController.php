@@ -416,6 +416,44 @@ DB::table('physical_exam')->insert(['pasport_no'=>$traveller,
     }   // close New  Travellers
 
 
+    
+
+    public function user_profile($id)
+    {
+       
+        $travellers = DB::table('travellers')->get();
+
+        $users_type = DB::table('user_type')->get();
+
+        $usr = DB::table('users')->where('id',$id)->first();
+          
+        return view('user_profile', compact('travellers','usr'));
+
+    }   // close Users Profile
+
+
+
+
+    public function update_user(Request $request)
+    {
+
+            
+        $id = $request->input('cid');
+        $email = $request->input('email');
+        
+        
+        $user_name = $request->input('user_name');
+        $role = $request->input('role');
+        
+DB::table('users')
+              ->where('id', $id)
+              ->update(['name'=>$user_name, 'email'=>$email, 'user_types'=>$role ]);
+    
+        return redirect()->back()->with('message', 'Information has been updated successfully!');
+
+    }   // close Update user profile
+
+
 
 
 

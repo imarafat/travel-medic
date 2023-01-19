@@ -106,7 +106,22 @@
 <tr id="user_{{$user->id}}">
                       <td>{{ $user->id }}</td>
                       <td>{{ $user->name }}</td>
-                      <td>{{ $user->user_types }}</td>
+                      <td>
+                                                @if($user->user_types == 1)
+                                                        Admin
+                                                    @elseif($user->user_types == 2)
+                                                        Registration Booth
+                                                    @elseif($user->user_types == 3)
+                                                        LAB
+                                                    @elseif($user->user_types == 4)
+                                                        Radiology
+                                                    @elseif($user->user_types == 5)
+                                                        Physical Examiners
+                                                    @elseif($user->user_types == 6)
+                                                        Report
+                                                @endif    
+                                                        
+                      </td>
                      
                       <td> <a href="{{ url('user-edit', $user->id) }}" target="_blank"> Update </a> | 
                       <a href="javascript:void(0)" class="text-danger del_cat" onclick="delete_category({{$user->id}})" idd="{{$user->id}}"> DELETE </a></td>
