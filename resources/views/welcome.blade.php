@@ -81,6 +81,41 @@
 
                         
                         </div>
+
+                        <div class="row my-8 py-4">
+                        
+                            <div class="col-md-10 mx-auto text-center">
+
+<br />
+
+                                @if(session()->has('SearchResult'))
+
+                                    @if(session()->get('SearchResult') == "Pending")
+
+                                        <div class="alert alert-danger">
+                                            Report Not Found
+                                        </div>                                     
+
+                                    @else
+
+                                        <div class="alert alert-success">
+                                            Report {{ session()->get('SearchResult') }} 
+                                        </div>
+                                            
+
+                                    @endif
+
+                                @endif
+
+
+
+
+
+
+                            </div>
+                        
+                        </div>
+
                     </div>
                 </div>
 
